@@ -1,4 +1,4 @@
-# helm
+# Delta Reporter Helm Repository
 Helm chart for Kubernetes deployment
 
 To deploy Delta Reporter into Minikube, follow this instructions:
