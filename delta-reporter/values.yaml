@@ -18,7 +18,7 @@ deployment:
   core:
     image: deltareporter/delta_core:version1.0
     appSettings: config.ProductionConfig
-    databaseUrl: postgresql://delta:123123@db/delta_db
+    databaseUrl: postgresql://delta:123123@delta-db/delta_db
     port: 5000
   frontend:
     image: deltareporter/delta_frontend:version1.0
@@ -30,6 +30,9 @@ deployment:
     postgresDb: delta_db
     postgresPassword: "123123"
     postgresUser: delta
+    pgdata: /var/lib/postgresql/data/db/
+    dataMountPath: /var/lib/postgresql/data
+    dataStorage: 9Gi
 
   tls: []
   #  - secretName: chart-example-tls

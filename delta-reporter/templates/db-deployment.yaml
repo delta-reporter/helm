@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    service: db
-  name: db
+    service: delta-db
+  name: delta-db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: db
+      service: delta-db
   strategy:
     type: Recreate
   template:
     metadata:
       creationTimestamp: null
       labels:
-        service: db
+        service: delta-db
     spec:
       containers:
       - env:
@@ -26,6 +26,8 @@ spec:
           value: {{ .Values.deployment.db.postgresPassword | quote }}
         - name: POSTGRES_USER
           value: {{ .Values.deployment.db.postgresUser }}
+        - name: PGDATA
+          value: {{ .Values.deployment.db.pgdata }}
         image: {{ .Values.deployment.db.image }}
         imagePullPolicy: ""
         name: delta-database
@@ -33,7 +35,7 @@ spec:
         - containerPort: {{ .Values.deployment.db.port }}
         resources: {}
         volumeMounts:
-        - mountPath: /var/lib/postgresql/data
+        - mountPath: {{ .Values.deployment.db.dataMountPath }}
           name: db-claim0
       restartPolicy: Always
       serviceAccountName: ""
@@ -55,7 +57,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 9Gi
+      storage: {{ .Values.deployment.db.dataStorage }}
 status: {}
 ---
 apiVersion: v1
@@ -63,14 +65,14 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    service: db
-  name: db
+    service: delta-db
+  name: delta-db
 spec:
   ports:
   - name: {{ .Values.service.db.port | quote }}
     port: {{ .Values.service.db.port }}
     targetPort: {{ .Values.service.db.port }}
   selector:
-    service: db
+    service: delta-db
 status:
   loadBalancer: {}
