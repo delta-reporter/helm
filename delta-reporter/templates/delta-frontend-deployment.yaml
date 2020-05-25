@@ -25,7 +25,7 @@ spec:
         - name: PORT
           value: {{ .Values.deployment.frontend.port | quote }}
         image: {{ .Values.deployment.frontend.image }}
-        imagePullPolicy: ""
+        imagePullPolicy: Always
         name: delta-frontend
         ports:
         - containerPort: {{ .Values.deployment.frontend.port }}
