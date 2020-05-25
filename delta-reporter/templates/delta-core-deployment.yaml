@@ -25,7 +25,7 @@ spec:
         - name: DATABASE_URL
           value: {{ .Values.deployment.core.databaseUrl }}
         image: {{ .Values.deployment.core.image }}
-        imagePullPolicy: ""
+        imagePullPolicy: Always
         name: delta-core
         ports:
         - containerPort: {{ .Values.deployment.core.port }}
