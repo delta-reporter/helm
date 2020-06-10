@@ -3,7 +3,19 @@ entries:
   delta-reporter:
   - apiVersion: v1
     appVersion: 1.3.0
-    created: "2020-06-10T11:37:23.338323+01:00"
+    created: "2020-06-10T15:49:02.533519+01:00"
+    description: Next generation reporting tool where results from all kind all tests
+      are displayed in real time.
+    digest: f6be69759e42557f55b1b727a1c3b2ea1acd1909399e8e4683790ad419051548
+    icon: https://raw.githubusercontent.com/delta-reporter/delta-reporter/master/site/logo-test.jpg
+    name: delta-reporter
+    type: application
+    urls:
+    - https://delta-reporter.github.io/helm/delta-reporter-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v1
+    appVersion: 1.3.0
+    created: "2020-06-10T15:49:02.532469+01:00"
     description: Next generation reporting tool where results from all kind all tests
       are displayed in real time.
     digest: 1674e1a325942a6a8dd25d82cb420bbe83143373dba9026e3ba3470acfa96307
@@ -15,7 +27,7 @@ entries:
     version: 0.1.4
   - apiVersion: v1
     appVersion: 1.1.0
-    created: "2020-06-10T11:37:23.336845+01:00"
+    created: "2020-06-10T15:49:02.53146+01:00"
     description: Next generation reporting tool where results from all kind all tests
       are displayed in real time.
     digest: 430bad56ef803e800f27f69e46f974fa5dfa784bf8af08ab06dd5a5b8220b92a
@@ -27,7 +39,7 @@ entries:
     version: 0.1.3
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-06-10T11:37:23.336109+01:00"
+    created: "2020-06-10T15:49:02.529843+01:00"
     description: Next generation reporting tool where results from all kind all tests
       are displayed in real time.
     digest: df03c8633145e4541fc3f8d4a75bf6044ea4b376b1ae61319d43db4985c8a840
@@ -39,7 +51,7 @@ entries:
     version: 0.1.2
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-06-10T11:37:23.335297+01:00"
+    created: "2020-06-10T15:49:02.529113+01:00"
     description: Next generation reporting tool where results from all kind all tests
       are displayed in real time.
     digest: 9e02cfb1e19952ccf0e05c54e980ceb93fd85b2a72cffc25dd99dd9f790d90a6
@@ -51,7 +63,7 @@ entries:
     version: 0.1.1
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-06-10T11:37:23.334566+01:00"
+    created: "2020-06-10T15:49:02.528382+01:00"
     description: Next generation reporting tool where results from all kind all tests
       are displayed in real time.
     digest: c95089ec6cef9b073c676d00e76cd8738285d9dcadbd8dd5cd1902861a7058ff
@@ -61,4 +73,4 @@ entries:
     urls:
     - https://delta-reporter.github.io/helm/delta-reporter-0.1.0.tgz
     version: 0.1.0
-generated: "2020-06-10T11:37:23.329711+01:00"
+generated: "2020-06-10T15:49:02.527449+01:00"
