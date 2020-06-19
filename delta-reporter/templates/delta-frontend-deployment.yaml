@@ -22,6 +22,8 @@ spec:
       - env:
         - name: DELTA_CORE_URL
           value: {{ .Values.deployment.frontend.coreUrl }}
+        - name: PUBLIC_DELTA_CORE_URL
+          value: {{ .Values.deployment.frontend.publicCoreUrl }}
         - name: PORT
           value: {{ .Values.deployment.frontend.port | quote }}
         image: {{ .Values.deployment.frontend.image }}
