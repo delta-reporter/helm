@@ -3,6 +3,18 @@ entries:
   delta-reporter:
   - apiVersion: v1
     appVersion: 1.5.6
+    created: "2020-07-31T10:23:40.273199999Z"
+    description: Next generation reporting tool where results from all kind all tests
+      are displayed in real time.
+    digest: d6463ca639097c06dbfc3a6d7752176b5366d7ceda8dbb9a7ef12bc39b71dd9d
+    icon: https://raw.githubusercontent.com/delta-reporter/delta-reporter/master/site/logo-test.jpg
+    name: delta-reporter
+    type: application
+    urls:
+    - https://github.com/delta-reporter/helm/releases/download/delta-reporter-0.1.16/delta-reporter-0.1.16.tgz
+    version: 0.1.16
+  - apiVersion: v1
+    appVersion: 1.5.6
     created: "2020-07-31T09:56:37.106281101Z"
     description: Next generation reporting tool where results from all kind all tests
       are displayed in real time.
