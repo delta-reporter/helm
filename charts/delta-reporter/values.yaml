@@ -16,12 +16,12 @@ service:
 
 deployment:
   core:
-    image: deltareporter/delta_core:version1.6.6
+    image: deltareporter/delta_core:version1.6.7
     appSettings: config.ProductionConfig
     databaseUrl: postgresql://delta:123123@delta-db/delta_db
     port: 5000
   frontend:
-    image: deltareporter/delta_frontend:version1.10
+    image: deltareporter/delta_frontend:version1.11
     coreUrl: http://delta-core:5000
     publicCoreUrl: http://localhost:5000
     port: 3000
