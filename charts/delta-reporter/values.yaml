@@ -21,7 +21,7 @@ deployment:
     databaseUrl: postgresql://delta:123123@delta-db/delta_db
     port: 5000
   frontend:
-    image: deltareporter/delta_frontend:version1.12
+    image: deltareporter/delta_frontend:version1.13
     coreUrl: http://delta-core:5000
     publicCoreUrl: http://localhost:5000
     port: 3000
