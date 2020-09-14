@@ -26,6 +26,8 @@ spec:
           value: {{ .Values.deployment.frontend.publicCoreUrl }}
         - name: PORT
           value: {{ .Values.deployment.frontend.port | quote }}
+        - name: PUBLIC_DELTA_WEBSOCKETS_URL
+          value: {{ .Values.deployment.frontend.publicWebsocketsUrl | quote }}
         image: {{ .Values.deployment.frontend.image }}
         imagePullPolicy: Always
         name: delta-frontend
