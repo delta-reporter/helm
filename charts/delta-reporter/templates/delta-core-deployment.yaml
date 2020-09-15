@@ -24,6 +24,8 @@ spec:
           value: {{ .Values.deployment.core.appSettings }}
         - name: DATABASE_URL
           value: {{ .Values.deployment.core.databaseUrl }}
+        - name: WEBSOCKETS_URL
+          value: {{ .Values.deployment.core.websocketsUrl }}
         image: {{ .Values.deployment.core.image }}
         imagePullPolicy: Always
         name: delta-core
