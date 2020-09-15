@@ -30,7 +30,7 @@ deployment:
     publicWebsocketsUrl: http://localhost:8080
     port: 3000
   websockets:
-    image: deltareporter/delta_websockets:v1.0
+    image: deltareporter/delta_websockets:v1.1
     appSettings: config.ProductionConfig
     port: 8080
   db:
