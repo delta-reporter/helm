@@ -24,7 +24,7 @@ deployment:
     websocketsUrl: http://delta-websockets:8080/send_event
     port: 5000
   frontend:
-    image: deltareporter/delta_frontend:version1.14
+    image: deltareporter/delta_frontend:version1.15
     coreUrl: http://delta-core:5000
     publicCoreUrl: http://localhost:5000
     publicWebsocketsUrl: http://localhost:8080
