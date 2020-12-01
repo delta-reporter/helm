@@ -18,13 +18,13 @@ service:
 
 deployment:
   core:
-    image: deltareporter/delta_core:version1.13
+    image: deltareporter/delta_core:version1.14
     appSettings: config.ProductionConfig
     databaseUrl: postgresql://delta:123123@delta-db/delta_db
     websocketsUrl: http://delta-websockets:8080/send_event
     port: 5000
   frontend:
-    image: deltareporter/delta_frontend:version1.22
+    image: deltareporter/delta_frontend:version1.23
     coreUrl: http://delta-core:5000
     publicCoreUrl: http://localhost:5000
     publicWebsocketsUrl: http://localhost:8080
