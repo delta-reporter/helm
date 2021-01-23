@@ -34,6 +34,7 @@ deployment:
     appSettings: config.ProductionConfig
     port: 8080
   db:
+    localDatabase: true
     image: postgres:12
     port: 5432
     postgresDb: delta_db
