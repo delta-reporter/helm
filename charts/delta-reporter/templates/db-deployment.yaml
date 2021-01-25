@@ -1,4 +1,3 @@
-{{- if .Values.deployment.db.localDatabase -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -7,7 +6,11 @@ metadata:
     service: delta-db
   name: delta-db
 spec:
+  {{ if .Values.deployment.db.localDatabase }}
   replicas: 1
+  {{ else }}
+  replicas: 0
+  {{ end }}
   selector:
     matchLabels:
       service: delta-db
@@ -45,9 +48,8 @@ spec:
         persistentVolumeClaim:
           claimName: db-claim0
 status: {}
-{{- end -}}
 ---
-{{- if .Values.deployment.db.localDatabase -}}
+{{ if .Values.deployment.db.localDatabase }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -62,9 +64,9 @@ spec:
     requests:
       storage: {{ .Values.deployment.db.dataStorage }}
 status: {}
-{{- end -}}
+{{ end }}
 ---
-{{- if .Values.deployment.db.localDatabase -}}
+{{ if .Values.deployment.db.localDatabase }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -81,4 +83,4 @@ spec:
     service: delta-db
 status:
   loadBalancer: {}
-{{- end -}}
+{{ end }}
