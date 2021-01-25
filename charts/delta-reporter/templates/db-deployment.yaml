@@ -6,7 +6,11 @@ metadata:
     service: delta-db
   name: delta-db
 spec:
+  {{ if .Values.deployment.db.localDatabase }}
   replicas: 1
+  {{ else }}
+  replicas: 0
+  {{ end }}
   selector:
     matchLabels:
       service: delta-db
@@ -45,6 +49,7 @@ spec:
           claimName: db-claim0
 status: {}
 ---
+{{ if .Values.deployment.db.localDatabase }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -59,7 +64,9 @@ spec:
     requests:
       storage: {{ .Values.deployment.db.dataStorage }}
 status: {}
+{{ end }}
 ---
+{{ if .Values.deployment.db.localDatabase }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -76,3 +83,4 @@ spec:
     service: delta-db
 status:
   loadBalancer: {}
+{{ end }}
