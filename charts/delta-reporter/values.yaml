@@ -19,6 +19,7 @@ deployment:
     image: deltareporter/delta_core:version1.15.3
     appSettings: config.ProductionConfig
     databaseUrl: postgresql://delta:123123@delta-db/delta_db
+    daysOldMediaDelete: 3
     port: 5000
   frontend:
     image: deltareporter/delta_frontend:version1.25
