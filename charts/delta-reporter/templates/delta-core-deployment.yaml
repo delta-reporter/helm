@@ -25,7 +25,7 @@ spec:
         - name: DATABASE_URL
           value: {{ .Values.deployment.core.databaseUrl }}
         - name: DAYS_OLD_MEDIA_DELETE
-          value: {{ .Values.deployment.core.daysOldMediaDelete }}
+          value: {{ .Values.deployment.core.daysOldMediaDelete | quote }}
         image: {{ .Values.deployment.core.image }}
         imagePullPolicy: Always
         name: delta-core
