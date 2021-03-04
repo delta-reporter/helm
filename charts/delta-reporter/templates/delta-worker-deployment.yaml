@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    service: delta-worker
+  name: delta-worker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: delta-worker
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: delta-worker
+    spec:
+      containers:
+      - env:
+        - name: APP_SETTINGS
+          value: {{ .Values.deployment.worker.appSettings }}
+        - name: DATABASE_URL
+          value: {{ .Values.deployment.worker.databaseUrl }}
+        - name: REDIS_URL
+          value: {{ .Values.deployment.worker.redisUrl }}
+        - name: BROKER_URL
+          value: {{ .Values.deployment.worker.brokerUrl }}
+        image: {{ .Values.deployment.worker.image }}
+        imagePullPolicy: Always
+        name: delta-worker
+        args:
+          - sh
+          - -c
+          - python -m celery -A tasks worker --loglevel INFO
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+status: {}

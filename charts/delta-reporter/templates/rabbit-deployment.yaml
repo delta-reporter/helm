@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    service: delta-rabbit
+  name: delta-rabbit
+spec:
+  {{ if .Values.deployment.rabbit.localRabbit }}
+  replicas: 1
+  {{ else }}
+  replicas: 0
+  {{ end }}
+  selector:
+    matchLabels:
+      service: delta-rabbit
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: delta-rabbit
+    spec:
+      containers:
+      - env:
+        - name: RABBITMQ_DEFAULT_PASS
+          value: {{ .Values.deployment.rabbit.rabbitPassword | quote }}
+        - name: RABBITMQ_DEFAULT_USER
+          value: {{ .Values.deployment.rabbit.rabbitUser }}
+        image: {{ .Values.deployment.rabbit.image }}
+        imagePullPolicy: ""
+        name: delta-database
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+status: {}
+---
+{{ if .Values.deployment.rabbit.localRabbit }}
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    service: delta-rabbit
+  name: delta-rabbit
+spec:
+  ports:
+  - name: {{ .Values.service.rabbit.port | quote }}
+    port: {{ .Values.service.rabbit.port }}
+    targetPort: {{ .Values.service.rabbit.port }}
+  selector:
+    service: delta-rabbit
+status:
+  loadBalancer: {}
+{{ end }}
