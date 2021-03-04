@@ -24,6 +24,10 @@ spec:
           value: {{ .Values.deployment.core.appSettings }}
         - name: DATABASE_URL
           value: {{ .Values.deployment.core.databaseUrl }}
+        - name: REDIS_URL
+          value: {{ .Values.deployment.core.redisUrl }}
+        - name: BROKER_URL
+          value: {{ .Values.deployment.core.brokerUrl }}
         - name: DAYS_OLD_MEDIA_DELETE
           value: {{ .Values.deployment.core.daysOldMediaDelete | quote }}
         image: {{ .Values.deployment.core.image }}

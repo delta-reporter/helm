@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    service: delta-redis
+  name: delta-redis
+spec:
+  {{ if .Values.deployment.redis.localRedis }}
+  replicas: 1
+  {{ else }}
+  replicas: 0
+  {{ end }}
+  selector:
+    matchLabels:
+      service: delta-redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        service: delta-redis
+    spec:
+      containers:
+      - image: {{ .Values.deployment.redis.image }}
+        imagePullPolicy: ""
+        name: delta-redis
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+status: {}
+---
+{{ if .Values.deployment.redis.localRedis }}
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    service: delta-redis
+  name: delta-redis
+spec:
+  ports:
+  - name: {{ .Values.service.redis.port | quote }}
+    port: {{ .Values.service.redis.port }}
+    targetPort: {{ .Values.service.redis.port }}
+  selector:
+    service: delta-redis
+status:
+  loadBalancer: {}
+{{ end }}
