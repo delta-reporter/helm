@@ -20,7 +20,7 @@ service:
 
 deployment:
   core:
-    image: deltareporter/delta_core:version1.15.7
+    image: deltareporter/delta_core:version1.16.1
     appSettings: config.ProductionConfig
     databaseUrl: postgresql://delta:123123@delta-db/delta_db
     redisUrl: redis://delta-redis:6379/0
@@ -28,13 +28,13 @@ deployment:
     daysOldMediaDelete: 3
     port: 5000
   worker:
-    image: deltareporter/delta_core:version1.15.6
+    image: deltareporter/delta_core:version1.16.1
     appSettings: config.ProductionConfig
     databaseUrl: postgresql://delta:123123@delta-db/delta_db
     redisUrl: redis://delta-redis:6379/0
     brokerUrl: amqp://delta:123123@delta-rabbit//
   frontend:
-    image: deltareporter/delta_frontend:version1.27.4
+    image: deltareporter/delta_frontend:version1.28.1
     coreUrl: http://delta-core:5000
     publicCoreUrl: http://localhost:5000
     port: 3000
